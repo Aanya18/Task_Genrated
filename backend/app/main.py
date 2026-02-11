@@ -5,10 +5,10 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.config import get_settings
-from app.database import init_db
-from app.routes import features, health
-from app.utils.logger import logger
+from .config import get_settings
+from .database import init_db
+from .routes import features, health
+from .utils.logger import logger
 
 settings = get_settings()
 
@@ -24,8 +24,7 @@ async def lifespan(app: FastAPI):
     errors = settings.validate()
     if errors:
         for error in errors:
-            logger.error(f"Configuration error: {error}")
-        raise RuntimeError("Configuration validation failed")
+            logger.warning(f"Configuration warning: {error}")
     
     # Initialize database
     init_db()

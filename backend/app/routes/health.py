@@ -4,9 +4,9 @@ from datetime import datetime
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
-from app.database import get_db, check_db_connection
-from app.schemas import HealthStatus
-from app.utils.llm import check_llm_connection
+from ..database import get_db, check_db_connection
+from ..schemas import HealthStatus
+from ..utils.llm import check_llm_connection
 
 logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/api/health", tags=["health"])

@@ -3,10 +3,10 @@ import json
 import logging
 from typing import Optional
 from sqlalchemy.orm import Session
-from app.models import FeaturePlan
-from app.schemas import EngineeringTask, UserStory
-from app.utils.llm import generate_feature_plan
-from app.utils.validators import validate_feature_plan_input
+from ..models import FeaturePlan
+from ..schemas import EngineeringTask, UserStory
+from ..utils.llm import generate_feature_plan
+from ..utils.validators import validate_feature_plan_input
 
 logger = logging.getLogger(__name__)
 

@@ -2,6 +2,12 @@
 import os
 from functools import lru_cache
 from typing import Optional
+from pathlib import Path
+from dotenv import load_dotenv
+
+# Load environment variables from .env file (from root directory)
+dotenv_path = Path(__file__).parent.parent.parent / ".env"
+load_dotenv(dotenv_path)
 
 
 class Settings:
@@ -12,9 +18,9 @@ class Settings:
         "DATABASE_URL", "sqlite:///./tasks_generator.db"
     )
 
-    # OpenAI
-    OPENAI_API_KEY: str = os.getenv("OPENAI_API_KEY", "")
-    OPENAI_MODEL: str = os.getenv("OPENAI_MODEL", "gpt-4-turbo")
+    # Groq API
+    GROQ_API_KEY: str = os.getenv("GROQ_API_KEY", "")
+    GROQ_MODEL: str = os.getenv("GROQ_MODEL", "mixtral-8x7b-32768")
 
     # App
     DEBUG: bool = os.getenv("DEBUG", "False").lower() == "true"
@@ -34,8 +40,8 @@ class Settings:
     def validate(self) -> list[str]:
         """Validate required settings."""
         errors = []
-        if not self.OPENAI_API_KEY:
-            errors.append("OPENAI_API_KEY environment variable is not set")
+        if not self.GROQ_API_KEY:
+            errors.append("GROQ_API_KEY environment variable is not set")
         return errors
 
 

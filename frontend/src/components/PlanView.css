@@ -1,0 +1,253 @@
+.plan-view {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.plan-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.header-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.goal-section,
+.user-stories-section,
+.tasks-section,
+.risks-section {
+  margin-bottom: 2rem;
+}
+
+.goal-section h3,
+.user-stories-section h3,
+.tasks-section h3,
+.risks-section h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.goal-section p {
+  font-size: 1.1rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+.story-card {
+  background: #f9f9f9;
+  padding: 1rem;
+  border-left: 4px solid #0066cc;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.story-card h4 {
+  margin-bottom: 0.5rem;
+  color: #0066cc;
+}
+
+.story-card p {
+  color: #555;
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+.criteria ul {
+  margin-left: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.criteria li {
+  margin-bottom: 0.25rem;
+  color: #555;
+}
+
+.task-category {
+  margin-bottom: 1.5rem;
+}
+
+.task-category h4 {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: #333;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.no-tasks {
+  color: #999;
+  font-style: italic;
+}
+
+.tasks-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.task-card {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 1rem;
+  background: #fafafa;
+}
+
+.task-card.priority-high {
+  border-left: 4px solid #cc0000;
+}
+
+.task-card.priority-medium {
+  border-left: 4px solid #ff9900;
+}
+
+.task-card.priority-low {
+  border-left: 4px solid #00cc00;
+}
+
+.task-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.priority-badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
+  border-radius: 3px;
+  text-transform: uppercase;
+}
+
+.task-card.priority-high .priority-badge {
+  background: #cc0000;
+  color: white;
+}
+
+.task-card.priority-medium .priority-badge {
+  background: #ff9900;
+  color: white;
+}
+
+.task-card.priority-low .priority-badge {
+  background: #00cc00;
+  color: white;
+}
+
+.task-header h5 {
+  flex: 1;
+  margin: 0;
+  color: #333;
+}
+
+.effort {
+  font-size: 0.85rem;
+  color: #666;
+  background: #e0e0e0;
+  padding: 0.25rem 0.5rem;
+  border-radius: 3px;
+}
+
+.description {
+  color: #555;
+  margin: 0.5rem 0;
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+.task-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.btn-small {
+  padding: 0.4rem 0.7rem;
+  background: #f0f0f0;
+  color: #333;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.btn-small:hover {
+  background: #e0e0e0;
+}
+
+.risk-card {
+  background: #fff5e6;
+  border-left: 4px solid #ff9900;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.risk-card h5 {
+  margin: 0 0 0.5rem 0;
+  color: #cc6600;
+}
+
+.risk-details p {
+  margin: 0.25rem 0;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.severity-high {
+  color: #cc0000;
+  font-weight: 600;
+}
+
+.severity-medium {
+  color: #ff9900;
+  font-weight: 600;
+}
+
+.severity-low {
+  color: #00cc00;
+  font-weight: 600;
+}
+
+.metadata {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e0e0e0;
+  color: #999;
+}
+
+.btn-primary,
+.btn-secondary {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.btn-primary {
+  background: #0066cc;
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #0052a3;
+}
+
+.btn-secondary {
+  background: #f0f0f0;
+  color: #333;
+  border: 1px solid #ddd;
+}
+
+.btn-secondary:hover {
+  background: #e0e0e0;
+}

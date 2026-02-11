@@ -1,0 +1,68 @@
+.health-status {
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.health-status.status-green {
+  background: #e6ffe6;
+  border: 1px solid #00cc00;
+  color: #006600;
+}
+
+.health-status.status-orange {
+  background: #fff5e6;
+  border: 1px solid #ff9900;
+  color: #cc6600;
+}
+
+.health-status.status-red {
+  background: #ffe6e6;
+  border: 1px solid #cc0000;
+  color: #660000;
+}
+
+.health-status h4 {
+  margin: 0 0 0.75rem 0;
+  font-size: 1rem;
+}
+
+.health-indicators {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.indicator .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.indicator.status-green .dot {
+  background: #00cc00;
+}
+
+.indicator.status-orange .dot {
+  background: #ff9900;
+}
+
+.indicator.status-red .dot {
+  background: #cc0000;
+}
+
+.health-loading,
+.health-error {
+  padding: 1rem;
+  background: #f0f0f0;
+  border-radius: 4px;
+  text-align: center;
+  color: #666;
+}

@@ -5,8 +5,8 @@ from datetime import datetime
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.orm import Session
 
-from app.database import get_db
-from app.schemas import (
+from ..database import get_db
+from ..schemas import (
     FeaturePlanRequest,
     FeaturePlanResponse,
     FeaturePlanUpdate,
@@ -14,7 +14,7 @@ from app.schemas import (
     EngineeringTask,
     UserStory,
 )
-from app.services.feature_service import FeatureService
+from ..services.feature_service import FeatureService
 
 logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/api/features", tags=["features"])

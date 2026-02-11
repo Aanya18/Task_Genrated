@@ -1,16 +1,27 @@
-"""LLM integration with OpenAI."""
+"""LLM integration with Groq."""
 import json
 import logging
 import re
 from typing import Optional
-import openai
-from app.config import get_settings
+from groq import Groq
+from ..config import get_settings
 
 logger = logging.getLogger(__name__)
 settings = get_settings()
 
-# Configure OpenAI
-openai.api_key = settings.OPENAI_API_KEY
+# Initialize Groq client lazily
+_client = None
+
+def get_client():
+    """Get or create Groq client."""
+    global _client
+    if _client is None:
+        try:
+            _client = Groq(api_key=settings.GROQ_API_KEY)
+        except Exception as e:
+            logger.error(f"Failed to initialize Groq client: {str(e)}")
+            raise
+    return _client
 
 
 def generate_feature_plan(
@@ -20,7 +31,7 @@ def generate_feature_plan(
     max_retries: int = 3
 ) -> Optional[dict]:
     """
-    Generate a feature plan using OpenAI API.
+    Generate a feature plan using Groq API.
     
     Args:
         goal: The feature goal
@@ -67,16 +78,16 @@ Return ONLY valid JSON."""
 
     for attempt in range(max_retries):
         try:
-            logger.info(f"Calling OpenAI API (attempt {attempt + 1}/{max_retries})")
+            logger.info(f"Calling Groq API (attempt {attempt + 1}/{max_retries})")
             
-            response = openai.ChatCompletion.create(
-                model=settings.OPENAI_MODEL,
+            response = get_client().chat.completions.create(
+                model=settings.GROQ_MODEL,
                 messages=[
                     {"role": "system", "content": system_prompt},
                     {"role": "user", "content": user_content}
                 ],
                 temperature=0.7,
-                max_tokens=2000
+                max_tokens=2000,
             )
             
             content = response.choices[0].message.content.strip()
@@ -102,7 +113,7 @@ Return ONLY valid JSON."""
                 logger.error(f"Failed to parse JSON after {max_retries} attempts")
                 return None
         except Exception as e:
-            logger.error(f"Error calling OpenAI API: {str(e)}")
+            logger.error(f"Error calling Groq API: {str(e)}")
             return None
     
     return None
@@ -112,13 +123,11 @@ def check_llm_connection() -> bool:
     """Check if LLM connection is working."""
     try:
         logger.info("Testing LLM connection...")
-        response = openai.ChatCompletion.create(
-            model=settings.OPENAI_MODEL,
-            messages=[
-                {"role": "user", "content": "Say 'OK'"}
-            ],
+        response = get_client().chat.completions.create(
+            model=settings.GROQ_MODEL,
+            messages=[{"role": "user", "content": "Say OK"}],
             temperature=0.1,
-            max_tokens=10
+            max_tokens=10,
         )
         logger.info("LLM connection check passed")
         return True

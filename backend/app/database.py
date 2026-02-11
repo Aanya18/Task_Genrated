@@ -4,7 +4,7 @@ from sqlalchemy import create_engine, inspect
 from sqlalchemy.orm import sessionmaker, Session
 from sqlalchemy.pool import StaticPool
 
-from app.config import get_settings
+from .config import get_settings
 
 logger = logging.getLogger(__name__)
 settings = get_settings()
@@ -32,7 +32,7 @@ def get_db() -> Session:
 
 def init_db() -> None:
     """Initialize database by creating all tables."""
-    from app.models import Base
+    from .models import Base
     logger.info("Initializing database...")
     Base.metadata.create_all(bind=engine)
     logger.info("Database initialized successfully")
@@ -41,12 +41,11 @@ def init_db() -> None:
 def check_db_connection() -> bool:
     """Check if database connection is healthy."""
     try:
-        with engine.connect() as conn:
-            # SQLite specific check
-            if settings.is_database_sqlite:
-                conn.execute("SELECT 1")
-            logger.info("Database connection check passed")
-            return True
+        with engine.begin() as conn:
+            # Simple query to verify connection
+            conn.exec_driver_sql("SELECT 1")
+        logger.info("Database connection check passed")
+        return True
     except Exception as e:
         logger.error(f"Database connection check failed: {str(e)}")
         return False
