@@ -194,11 +194,7 @@ Task_Generators/
 │   └── .env.example
 ├── Dockerfile
 ├── docker-compose.yml
-├── .env.example
-├── README.md
-├── AI_NOTES.md
-├── PROMPTS_USED.md
-└── ABOUTME.md
+└── .env.example
 ```
 
 ## 🔑 Environment Variables
@@ -293,4 +289,4 @@ This project is provided as-is for production use.
 
 ## 📧 Support
 
-For issues or questions, refer to the generated AI_NOTES.md and PROMPTS_USED.md documentation.
+For issues or questions, refer to the inline code documentation.
