@@ -141,7 +141,6 @@ export default function Home() {
       </main>
 
       <footer className="app-footer">
-        <p>Tasks Generator © 2024 | Powered by FastAPI & OpenAI</p>
       </footer>
     </div>
   );
