@@ -27,11 +27,10 @@ class Settings:
     LOG_LEVEL: str = os.getenv("LOG_LEVEL", "INFO")
 
     # CORS
+    _default_origins = "http://localhost:5173,http://localhost:3000,https://task-genrated.vercel.app"
+    _env_origins = os.getenv("ALLOWED_ORIGINS", _default_origins)
     ALLOWED_ORIGINS: list = [
-        origin.strip() for origin in os.getenv(
-            "ALLOWED_ORIGINS",
-            "http://localhost:5173,http://localhost:3000,https://task-genrated.vercel.app"
-        ).split(",")
+        origin.strip() for origin in _env_origins.split(",") if origin.strip()
     ]
 
     @property
