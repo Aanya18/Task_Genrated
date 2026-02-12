@@ -29,7 +29,7 @@ class Settings:
     # CORS
     ALLOWED_ORIGINS: list = os.getenv(
         "ALLOWED_ORIGINS",
-        "http://localhost:5173,http://localhost:3000"
+        "http://localhost:5173,http://localhost:3000,https://task-genrated.vercel.app"
     ).split(",")
 
     @property
