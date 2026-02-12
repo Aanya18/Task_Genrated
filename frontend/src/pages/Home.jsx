@@ -100,7 +100,7 @@ export default function Home() {
     <div className="home">
       <header className="app-header">
         <div className="header-content">
-          <h1>📋 Tasks Generator</h1>
+          <h1>Tasks Generator</h1>
           <p>Generate comprehensive feature plans powered by AI</p>
         </div>
         <Health />

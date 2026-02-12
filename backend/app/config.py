@@ -20,7 +20,7 @@ class Settings:
 
     # Groq API
     GROQ_API_KEY: str = os.getenv("GROQ_API_KEY", "")
-    GROQ_MODEL: str = os.getenv("GROQ_MODEL", "mixtral-8x7b-32768")
+    GROQ_MODEL: str = os.getenv("GROQ_MODEL", "llama3.1-8b-instant")
 
     # App
     DEBUG: bool = os.getenv("DEBUG", "False").lower() == "true"
