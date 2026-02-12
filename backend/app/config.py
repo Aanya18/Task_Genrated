@@ -27,10 +27,12 @@ class Settings:
     LOG_LEVEL: str = os.getenv("LOG_LEVEL", "INFO")
 
     # CORS
-    ALLOWED_ORIGINS: list = os.getenv(
-        "ALLOWED_ORIGINS",
-        "http://localhost:5173,http://localhost:3000,https://task-genrated.vercel.app"
-    ).split(",")
+    ALLOWED_ORIGINS: list = [
+        origin.strip() for origin in os.getenv(
+            "ALLOWED_ORIGINS",
+            "http://localhost:5173,http://localhost:3000,https://task-genrated.vercel.app"
+        ).split(",")
+    ]
 
     @property
     def is_database_sqlite(self) -> bool:
